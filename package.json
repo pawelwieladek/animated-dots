@@ -1,0 +1,19 @@
+{
+  "name": "animated-dots",
+  "version": "1.0.0",
+  "description": "Animated dots",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pawelwieladek/animated-dots.git"
+  },
+  "author": "Pawel Wieladek <pawelwieladek@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pawelwieladek/animated-dots/issues"
+  },
+  "homepage": "https://github.com/pawelwieladek/animated-dots#readme"
+}
