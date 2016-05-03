@@ -1,0 +1,59 @@
+.full-screen {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  .full-screen();
+}
+
+body {
+  .full-screen();
+  background-color: @background-color;
+  padding: 0;
+  margin: 0;
+
+  > div {
+    .full-screen();
+  }
+}
+
+@keyframes vertical {
+  from {
+    top: 0;
+  }
+
+  to {
+    top: 100%;
+  }
+}
+
+.dots {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+
+  > .dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: @dot-color;
+    width: @dot-size;
+    height: @dot-size;
+    border: 0;
+    border-radius: @dot-size / 2;
+  }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+
+  &.vertical {
+    animation-name: vertical;
+  }
+}
