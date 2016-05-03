@@ -7,7 +7,7 @@ export class App extends Component {
         return (
             <div>
                 <Dots
-                    number={5}
+                    number={6}
                     animation="vertical" />
             </div>
         );

@@ -21,6 +21,10 @@ module.exports = {
                 loaders: ['style', 'css', 'less']
             },
             {
+                test: /\.css/,
+                loaders: ['style', 'css']
+            },
+            {
                 test: /\.(png|jpg|gif)$/,
                 exclude: /node_modules/,
                 loader: 'url?limit=10000'
