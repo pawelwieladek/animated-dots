@@ -20206,7 +20206,7 @@
 	                'div',
 	                null,
 	                _react2.default.createElement(_dots.Dots, {
-	                    number: 6,
+	                    number: 11,
 	                    animation: 'vertical' })
 	            );
 	        }
