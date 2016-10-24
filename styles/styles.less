@@ -29,26 +29,6 @@ body {
   margin: 10px;
 }
 
-@keyframes vertical {
-  from {
-    top: 0;
-  }
-
-  to {
-    top: calc(~'100% - @{dot-size}');
-  }
-}
-
-@keyframes horizontal {
-  from {
-    left: 0;
-  }
-
-  to {
-    left: calc(~'100% - @{dot-size}');
-  }
-}
-
 .dots {
   flex: 1;
   position: relative;
@@ -78,5 +58,13 @@ body {
 
   &.horizontal {
     animation-name: horizontal;
+  }
+
+  &.diagonal {
+    animation-name: diagonal;
+  }
+
+  &.diagonal-reversed {
+    animation-name: diagonal-reversed;
   }
 }

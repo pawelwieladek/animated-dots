@@ -4,13 +4,17 @@ import range from 'lodash/range';
 import * as Animations from './animation-types';
 import { VerticalDot } from './dots/vertical';
 import { HorizontalDot } from './dots/horizontal';
+import { DiagonalDot } from './dots/diagonal';
+import { DiagonalReversedDot } from './dots/diagonal-reversed';
 
 export class Dots extends Component {
     static propTypes = {
         number: PropTypes.number.isRequired,
         animation: PropTypes.oneOf([
             Animations.Vertical,
-            Animations.Horizontal
+            Animations.Horizontal,
+            Animations.Diagonal,
+            Animations.DiagonalReversed
         ]).isRequired
     };
 
@@ -20,6 +24,10 @@ export class Dots extends Component {
                 return VerticalDot;
             case Animations.Horizontal:
                 return HorizontalDot;
+            case Animations.Diagonal:
+                return DiagonalDot;
+            case Animations.DiagonalReversed:
+                return DiagonalReversedDot;
             default:
                 throw new Error(`Animation type ${this.props.animation} is not defined.`);
         }

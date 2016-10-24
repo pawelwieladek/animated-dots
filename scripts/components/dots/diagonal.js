@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { Dot } from '../dot';
 
-export class HorizontalDot extends Component {
+export class DiagonalDot extends Component {
     static propTypes = {
         index: PropTypes.number.isRequired,
         totalNumber: PropTypes.number.isRequired
@@ -13,11 +13,12 @@ export class HorizontalDot extends Component {
         const { index, totalNumber } = this.props;
         const position = index / (totalNumber + 1) * 100;
         const style = {
-            top: `${position}%`
+            top: `${position}%`,
+            marginLeft: `${position}%`
         };
 
         return (
-            <Dot className="horizontal" style={style} />
+            <Dot className="diagonal" style={style} />
         );
     }
 }

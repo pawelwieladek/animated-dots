@@ -34,6 +34,8 @@ export class Menu extends Component {
                 >
                     <MenuItem value={Animations.Vertical} primaryText="Vertical" />
                     <MenuItem value={Animations.Horizontal} primaryText="Horizontal" />
+                    <MenuItem value={Animations.Diagonal} primaryText="Diagonal" />
+                    <MenuItem value={Animations.DiagonalReversed} primaryText="Diagonal Reversed" />
                 </IconMenu>
             </div>
         );
