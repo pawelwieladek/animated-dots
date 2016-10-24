@@ -8,6 +8,7 @@ import { HorizontalDot } from './dots/horizontal';
 import { DiagonalDot } from './dots/diagonal';
 import { DiagonalReversedDot } from './dots/diagonal-reversed';
 import { RotatingLineDot } from './dots/rotating-line';
+import { RotatingSquareDot } from './dots/rotating-square';
 
 export class Dots extends Component {
     static propTypes = {
@@ -32,6 +33,8 @@ export class Dots extends Component {
                 return DiagonalReversedDot;
             case Animations.RotatingLine:
                 return RotatingLineDot;
+            case Animations.RotatingSquare:
+                return RotatingSquareDot;
             default:
                 throw new Error(`Animation type ${this.props.animation} is not defined.`);
         }

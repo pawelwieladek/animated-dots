@@ -42,9 +42,21 @@ body {
   margin: 30px 30px;
 
   &.animated {
+    animation-duration: 4000ms;
     &.rotating-line {
       animation-name: rotating;
     }
+    &.rotating-square {
+      margin-top: 100px;
+      animation-name: rotating;
+    }
+  }
+
+  &.rotating-square {
+    flex: none;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
   }
 
   > .dot {
