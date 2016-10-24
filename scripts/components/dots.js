@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import range from 'lodash/range';
+import classNames from 'classnames';
 
 import * as Animations from './animation-types';
 import { VerticalDot } from './dots/vertical';
 import { HorizontalDot } from './dots/horizontal';
 import { DiagonalDot } from './dots/diagonal';
 import { DiagonalReversedDot } from './dots/diagonal-reversed';
+import { RotatingLineDot } from './dots/rotating-line';
 
 export class Dots extends Component {
     static propTypes = {
@@ -28,6 +30,8 @@ export class Dots extends Component {
                 return DiagonalDot;
             case Animations.DiagonalReversed:
                 return DiagonalReversedDot;
+            case Animations.RotatingLine:
+                return RotatingLineDot;
             default:
                 throw new Error(`Animation type ${this.props.animation} is not defined.`);
         }
@@ -49,7 +53,7 @@ export class Dots extends Component {
     render() {
         const dots = this.renderDots();
         return (
-            <div className="dots">
+            <div className={classNames('dots', 'animated', this.props.animation)}>
                 {dots}
             </div>
         );

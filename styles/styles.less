@@ -29,10 +29,23 @@ body {
   margin: 10px;
 }
 
+.animated {
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
 .dots {
   flex: 1;
   position: relative;
   margin: 30px 30px;
+
+  &.animated {
+    &.rotating-line {
+      animation-name: rotating;
+    }
+  }
 
   > .dot {
     position: absolute;
@@ -43,28 +56,27 @@ body {
     height: @dot-size;
     border: 0;
     border-radius: @dot-size / 2;
-  }
-}
 
-.animated {
-  animation-duration: 2000ms;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-timing-function: ease-in-out;
+    &.animated {
+      &.vertical {
+        animation-name: vertical;
+      }
 
-  &.vertical {
-    animation-name: vertical;
-  }
+      &.horizontal {
+        animation-name: horizontal;
+      }
 
-  &.horizontal {
-    animation-name: horizontal;
-  }
+      &.diagonal {
+        animation-name: diagonal;
+      }
 
-  &.diagonal {
-    animation-name: diagonal;
-  }
+      &.diagonal-reversed {
+        animation-name: diagonal-reversed;
+      }
+    }
 
-  &.diagonal-reversed {
-    animation-name: diagonal-reversed;
+    &.rotating-line {
+      top: 50%;
+    }
   }
 }

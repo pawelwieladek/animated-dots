@@ -1,4 +1,6 @@
-export const Vertical = 'Vertical';
-export const Horizontal = 'Horizontal';
-export const Diagonal = 'Diagonal';
-export const DiagonalReversed = 'DiagonalReversed';
+export const Vertical = 'vertical';
+export const Horizontal = 'horizontal';
+export const Diagonal = 'diagonal';
+export const DiagonalReversed = 'diagonal-reversed';
+export const RotatingLine = 'rotating-line';
+export const RotatingSquare = 'rotating-square';

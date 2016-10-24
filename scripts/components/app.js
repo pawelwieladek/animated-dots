@@ -19,7 +19,7 @@ export class App extends Component {
                     onChange={this.handleChange}
                 />
                 <Dots
-                    number={11}
+                    number={12}
                     animation={this.state.animation}
                 />
             </div>
