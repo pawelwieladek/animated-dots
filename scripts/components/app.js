@@ -1,14 +1,27 @@
 import React, { Component } from 'react'
 
-import { Dots } from './dots'
+import * as Animations from './animation-types';
+import { Dots } from './dots';
+import { Menu } from './menu';
 
 export class App extends Component {
+    state = {
+        animation: Animations.Vertical
+    };
+
+    handleChange = (animation) => this.setState({ animation });
+
     render() {
         return (
-            <div>
+            <div className="app">
+                <Menu
+                    animation={this.state.animation}
+                    onChange={this.handleChange}
+                />
                 <Dots
                     number={11}
-                    animation="vertical" />
+                    animation={this.state.animation}
+                />
             </div>
         );
     }

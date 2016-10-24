@@ -1,30 +1,45 @@
 import React, { Component, PropTypes } from 'react'
+import range from 'lodash/range';
 
-import { Dot } from './dot'
-
-function* range(start, stop) {
-    for (let i = start; i < stop; i++)
-        yield i;
-}
+import * as Animations from './animation-types';
+import { VerticalDot } from './dots/vertical';
+import { HorizontalDot } from './dots/horizontal';
 
 export class Dots extends Component {
     static propTypes = {
         number: PropTypes.number.isRequired,
         animation: PropTypes.oneOf([
-            'vertical'
+            Animations.Vertical,
+            Animations.Horizontal
         ]).isRequired
     };
 
-    render() {
-        const dots = [...range(0, this.props.number)].map(i => {
-            const position = (i + 1) / (this.props.number + 1) * 100;
-            const style = {
-                left: `${position}%`
-            };
+    getDotComponent() {
+        switch (this.props.animation) {
+            case Animations.Vertical:
+                return VerticalDot;
+            case Animations.Horizontal:
+                return HorizontalDot;
+            default:
+                throw new Error(`Animation type ${this.props.animation} is not defined.`);
+        }
+    }
+
+    renderDots() {
+        return range(0, this.props.number).map(i => {
+            const Dot = this.getDotComponent();
             return (
-                <Dot key={i} style={style} />
-            );
+                <Dot
+                    key={i}
+                    index={i}
+                    totalNumber={this.props.number}
+                />
+            )
         });
+    }
+
+    render() {
+        const dots = this.renderDots();
         return (
             <div className="dots">
                 {dots}

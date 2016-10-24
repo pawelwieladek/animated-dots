@@ -3,14 +3,16 @@ import classNames from 'classnames';
 
 export class Dot extends Component {
     static propTypes = {
-        classNames: PropTypes.string,
+        className: PropTypes.string,
         styles: PropTypes.object
     };
+
     render() {
         return (
-            <div
-                className={classNames("dot animated vertical", this.props.classNames)}
-                style={this.props.style}></div>
+            <span
+                className={classNames("dot animated", this.props.className)}
+                style={this.props.style}
+            />
         );
     }
 }

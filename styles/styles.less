@@ -18,6 +18,17 @@ body {
   }
 }
 
+.app {
+  .full-screen();
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  flex: 0 auto;
+  margin: 10px;
+}
+
 @keyframes vertical {
   from {
     top: 0;
@@ -28,12 +39,20 @@ body {
   }
 }
 
+@keyframes horizontal {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(~'100% - @{dot-size}');
+  }
+}
+
 .dots {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
+  flex: 1;
+  position: relative;
+  margin: 30px 30px;
 
   > .dot {
     position: absolute;
@@ -55,5 +74,9 @@ body {
 
   &.vertical {
     animation-name: vertical;
+  }
+
+  &.horizontal {
+    animation-name: horizontal;
   }
 }
