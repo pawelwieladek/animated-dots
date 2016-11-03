@@ -47,3 +47,30 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes helix {
+  0% {
+    transform: translateY(500%);
+    z-index: -1;
+  }
+
+  25% {
+    transform: translateY(0);
+    z-index: -1;
+  }
+
+  50% {
+    transform: translateY(-500%);
+    z-index: 1;
+  }
+
+  75% {
+    transform: translateY(0);
+    z-index: 1;
+  }
+
+  100% {
+    transform: translateY(500%);
+    z-index: 1;
+  }
+}

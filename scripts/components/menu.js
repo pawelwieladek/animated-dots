@@ -28,7 +28,7 @@ export class Menu extends Component {
                     )}
                     anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
                     targetOrigin={{ horizontal: 'left', vertical: 'top' }}
-                    maxHeight={272}
+                    maxHeight={500}
                     value={this.props.animation}
                     onChange={this.handleChange}
                 >
@@ -38,7 +38,7 @@ export class Menu extends Component {
                     <MenuItem value={Animations.DiagonalReversed} primaryText="Diagonal Reversed" />
                     <MenuItem value={Animations.RotatingLine} primaryText="Rotating Line" />
                     <MenuItem value={Animations.RotatingSquare} primaryText="Rotating Shape" />
-                    <MenuItem value={Animations.Marcin} primaryText="Marcin" />
+                    <MenuItem value={Animations.Helix} primaryText="Helix" />
                 </IconMenu>
             </div>
         );

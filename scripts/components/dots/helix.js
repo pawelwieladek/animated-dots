@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { Dot } from '../dot';
 
-export class MarcinDot extends Component {
+export class HelixDot extends Component {
     static propTypes = {
         index: PropTypes.number.isRequired,
         totalNumber: PropTypes.number.isRequired
@@ -11,13 +11,14 @@ export class MarcinDot extends Component {
 
     render() {
         const { index, totalNumber } = this.props;
-        const position = (index + 1) / (totalNumber + 1) * 15;
+        const position = (index + 1) / (totalNumber + 2) * 100;
         const style = {
-            left: `${position}%`
+            left: `${position}%`,
+            top: '50%'
         };
 
         return (
-            <Dot className="vertical" style={style} />
+            <Dot className="helix" style={style} />
         );
     }
 }

@@ -37,6 +37,7 @@ body {
 }
 
 .dots {
+  display: inline-block;
   flex: 1;
   position: relative;
   margin: 30px 30px;
@@ -90,8 +91,17 @@ body {
         animation-name: diagonal-reversed;
       }
 
-      &.marcin {
-        animation-name: marcin;
+      &.helix {
+        display: inline-block;
+        position: relative;
+
+        @for $i from 1 through $dot-count {
+          &:nth-child(#{$i}) {
+            transform: translateY(500%);
+            animation: helix 1s linear infinite;
+            animation-delay: $i*-0.9s;
+          }
+        }
       }
     }
 
