@@ -1,25 +1,25 @@
-.full-screen {
+@mixin full-screen {
   width: 100%;
   height: 100%;
 }
 
 html {
-  .full-screen();
+  @include full-screen();
 }
 
 body {
-  .full-screen();
-  background-color: @background-color;
+  @include full-screen();
+  background-color: $background-color;
   padding: 0;
   margin: 0;
 
   > div {
-    .full-screen();
+    @include full-screen();
   }
 }
 
 .app {
-  .full-screen();
+  @include full-screen();
   display: flex;
   flex-direction: column;
 }
@@ -67,11 +67,11 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: @dot-color;
-    width: @dot-size;
-    height: @dot-size;
+    background-color: $dot-color;
+    width: $dot-size;
+    height: $dot-size;
     border: 0;
-    border-radius: @dot-size / 2;
+    border-radius: $dot-size / 2;
 
     &.animated {
       &.vertical {
@@ -88,6 +88,10 @@ body {
 
       &.diagonal-reversed {
         animation-name: diagonal-reversed;
+      }
+
+      &.marcin {
+        animation-name: marcin;
       }
     }
 
