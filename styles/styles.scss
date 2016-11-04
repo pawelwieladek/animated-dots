@@ -110,3 +110,45 @@ body {
     }
   }
 }
+
+.view {
+  height: $view-size;
+  width: $view-size;
+  overflow: hidden;
+
+  * {
+    backface-visibility: hidden;
+  }
+
+  background: currentColor;
+  color: #181310;
+  position: relative;
+  &:before {
+    content: '';
+    z-index: 4;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: ($view-size - $size*2)/2 - 1;
+    background: inherit;
+  }
+
+}
+
+.dots {
+  width: $length;
+  margin: -1px $length/-2;
+  z-index: 4;
+  animation: jump $speed*$sides steps($sides) infinite;
+
+  .dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: spin $speed ease-in-out infinite;
+    transform-origin: 100% 50%;
+  }
+}
