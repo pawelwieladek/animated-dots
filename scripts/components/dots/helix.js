@@ -14,7 +14,6 @@ export class HelixDot extends Component {
         const position = (index + 1) / (totalNumber + 2) * 100;
         const style = {
             left: `${position}%`,
-            top: '50%'
         };
 
         return (

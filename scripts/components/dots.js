@@ -10,7 +10,7 @@ import { DiagonalReversedDot } from './dots/diagonal-reversed';
 import { RotatingLineDot } from './dots/rotating-line';
 import { RotatingSquareDot } from './dots/rotating-square';
 import { HelixDot } from './dots/helix';
-import { BombDot } from './dots/bomb';
+import { HexagonDot } from './dots/hexagon';
 
 export class Dots extends Component {
     static propTypes = {
@@ -22,7 +22,8 @@ export class Dots extends Component {
             Animations.DiagonalReversed,
             Animations.RotatingLine,
             Animations.RotatingSquare,
-            Animations.Helix
+            Animations.Helix,
+            Animations.Hexagon
         ]).isRequired
     };
 
@@ -42,8 +43,8 @@ export class Dots extends Component {
                 return RotatingSquareDot;
             case Animations.Helix:
                 return HelixDot;
-            case Animations.Bomb:
-                return BombDot;
+            case Animations.Hexagon:
+                return HexagonDot;
             default:
                 throw new Error(`Animation type ${this.props.animation} is not defined.`);
         }
@@ -65,8 +66,10 @@ export class Dots extends Component {
     render() {
         const dots = this.renderDots();
         return (
-            <div className={classNames('dots', 'animated', this.props.animation)}>
+            <div className={classNames('outer', 'animated', this.props.animation)}>
+                <div className={classNames('dots', 'animated', this.props.animation)}>
                 {dots}
+                </div>
             </div>
         );
     }

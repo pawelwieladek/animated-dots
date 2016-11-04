@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { Dot } from '../dot';
 
-export class BombDot extends Component {
+export class HexagonDot extends Component {
     static propTypes = {
         index: PropTypes.number.isRequired,
         totalNumber: PropTypes.number.isRequired
@@ -14,11 +14,10 @@ export class BombDot extends Component {
         const position = (index + 1) / (totalNumber + 2) * 100;
         const style = {
             left: `${position}%`,
-            top: '50%'
         };
 
         return (
-            <Dot className="bomb" style={style} />
+            <Dot className="hexagon" style={style} />
         );
     }
 }

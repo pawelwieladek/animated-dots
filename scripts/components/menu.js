@@ -39,7 +39,7 @@ export class Menu extends Component {
                     <MenuItem value={Animations.RotatingLine} primaryText="Rotating Line" />
                     <MenuItem value={Animations.RotatingSquare} primaryText="Rotating Shape" />
                     <MenuItem value={Animations.Helix} primaryText="Helix" />
-                    <MenuItem value={Animations.Bomb} primaryText="Bomb Those Bees" />
+                    <MenuItem value={Animations.Hexagon} primaryText="Hexagon" />
                 </IconMenu>
             </div>
         );
