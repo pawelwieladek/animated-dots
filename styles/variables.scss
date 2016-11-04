@@ -3,8 +3,16 @@ $dot-color: #fff;
 $dot-size: 10px;
 $dot-count: 12;
 
-$view-size: 100px;
-$size: $view-size/3;
+$angle: 360 / $dot-count;
+$rotate: 0;
+
+$cells: 1;
+$size: 250px;
+$da: 360deg/$dot-count;
+$dur: 2s;
+$ddur: $dur/$dot-count;
+$fns: cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
 $sides: 6;
 $dots: 12;
 $length: 100;//2*$size*tan(180deg/$sides);

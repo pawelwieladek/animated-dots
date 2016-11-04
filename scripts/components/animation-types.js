@@ -7,3 +7,4 @@ export const RotatingSquare = 'rotating-square';
 export const Helix = 'helix';
 export const Hexagon = 'hexagon';
 export const Ball = 'ball';
+export const Snail = 'snail';
