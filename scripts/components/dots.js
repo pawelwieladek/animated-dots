@@ -11,6 +11,7 @@ import { RotatingLineDot } from './dots/rotating-line';
 import { RotatingSquareDot } from './dots/rotating-square';
 import { HelixDot } from './dots/helix';
 import { HexagonDot } from './dots/hexagon';
+import { BallDot } from './dots/ball';
 
 export class Dots extends Component {
     static propTypes = {
@@ -23,7 +24,8 @@ export class Dots extends Component {
             Animations.RotatingLine,
             Animations.RotatingSquare,
             Animations.Helix,
-            Animations.Hexagon
+            Animations.Hexagon,
+            Animations.Ball
         ]).isRequired
     };
 
@@ -45,6 +47,8 @@ export class Dots extends Component {
                 return HelixDot;
             case Animations.Hexagon:
                 return HexagonDot;
+            case Animations.Ball:
+                return BallDot;
             default:
                 throw new Error(`Animation type ${this.props.animation} is not defined.`);
         }

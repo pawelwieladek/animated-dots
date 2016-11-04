@@ -96,3 +96,24 @@
     transform: rotate(360deg/$sides*2);
   }
 }
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes ball-pop {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(200px);
+  }
+  75% {
+    transform: translateX(300px);
+  }
+}

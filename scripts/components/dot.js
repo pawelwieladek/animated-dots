@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, {Component, PropTypes} from 'react'
 import classNames from 'classnames';
 
 export class Dot extends Component {
@@ -9,10 +9,10 @@ export class Dot extends Component {
 
     render() {
         return (
-            <span
+            <div
                 className={classNames("dot animated", this.props.className)}
                 style={this.props.style}
-            />
+            ><span/></div>
         );
     }
 }

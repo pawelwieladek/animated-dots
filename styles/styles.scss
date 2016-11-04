@@ -1,3 +1,5 @@
+$angle: 360 / $dots;
+$rotate: 0;
 
 @mixin full-screen {
   width: 100%;
@@ -102,6 +104,16 @@ body {
       margin: 0 auto;
     }
 
+    &.ball {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 250px;
+      height: 250px;
+      transform: translate(-50%);
+      animation: rotate 4s linear 0s infinite;
+    }
+
     > .dot {
       position: absolute;
       top: 0;
@@ -139,6 +151,29 @@ body {
               animation: helix 1s linear infinite;
               animation-delay: $i*-0.9s;
             }
+          }
+        }
+
+        &.ball {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          background: $background-color;
+          @for $i from 1 through $dot-count {
+            $rotate: $rotate + $angle;
+            &:nth-child(#{$i}) {
+              transform: translate($dot-size / 2) rotate(#{$rotate + 90}deg);
+              span {
+                background: #ffffff;
+              }
+            }
+          }
+          span {
+            position: absolute;
+            width: $dot-size;
+            height: $dot-size;
+            border-radius: 50%;
+            animation: 0.75s ball-pop 0s ease-out infinite;
           }
         }
 

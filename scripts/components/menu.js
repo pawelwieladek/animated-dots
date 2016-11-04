@@ -40,6 +40,7 @@ export class Menu extends Component {
                     <MenuItem value={Animations.RotatingSquare} primaryText="Rotating Shape" />
                     <MenuItem value={Animations.Helix} primaryText="Helix" />
                     <MenuItem value={Animations.Hexagon} primaryText="Hexagon" />
+                    <MenuItem value={Animations.Ball} primaryText="Ball" />
                 </IconMenu>
             </div>
         );
