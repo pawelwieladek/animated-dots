@@ -5,8 +5,8 @@
 
 @mixin trail($size,$deg, $trail, $hue) {
   @for $i from 0 to $trail {
-    $x: 0.5; //$size - cos($deg/$sides/$trail*$i) * $size;
-    $y: 0.5; //sin($deg/$sides/$trail*$i) * $size;
+    $x: $size - cos($deg/$sides/$trail*$i) * $size;
+    $y: sin($deg/$sides/$trail*$i) * $size;
     $color: #ffffff;
     $layer: $x $y 0 -4px $color;
   }
@@ -46,6 +46,7 @@ body {
 }
 
 .outer {
+
   display: inline-block;
   flex: 1;
   position: relative;
@@ -60,11 +61,12 @@ body {
   }
 
   &.hexagon {
+    left: 50%;
     height: 2px;
     width: $length;
     margin: -1px $length/-2;
     z-index: 4;
-    animation: jump $speed*$sides steps($sides) infinite;
+    animation: jump 4.5s steps(6) infinite;
   }
 
   .dots {
@@ -88,13 +90,14 @@ body {
     }
 
     &.animated {
-      animation-duration: 4000ms;
       &.rotating-line {
+        animation-duration: 4000ms;
         animation-direction: normal;
         animation-timing-function: linear;
         animation-name: rotating;
       }
       &.rotating-square {
+        animation-duration: 4000ms;
         margin-top: 100px;
         animation-direction: normal;
         animation-timing-function: linear;
@@ -116,7 +119,7 @@ body {
       width: 250px;
       height: 250px;
       transform: translate(-50%);
-      animation: rotate 4s linear 0s infinite;
+      animation: rotate 10s linear 0s infinite;
     }
 
     > .dot {
@@ -169,7 +172,7 @@ body {
             &:nth-child(#{$i}) {
               transform: translate($dot-size / 2) rotate(#{$rotate + 90}deg);
               span {
-                background: #ffffff;
+                background: $dot-color;
               }
             }
           }
@@ -178,7 +181,7 @@ body {
             width: $dot-size;
             height: $dot-size;
             border-radius: 50%;
-            animation: 2s ball-pop 0s ease-out infinite;
+            animation: 3s ball-pop 0s ease-out infinite;
           }
         }
 
@@ -216,15 +219,15 @@ body {
           z-index: 4;
           top: 50%;
           left: 50%;
-          height: 10px;
-          width: 10px;
+          height: $dot-size;
+          width: $dot-size;
           background: #fff;
           border-radius: 100%;
           animation: trail $speed linear infinite;
 
-          @for $i from 0 to $dots + 1 {
+          @for $i from 0 to $dot-count {
             &:nth-child(#{$i + 1}) {
-              margin: -5px $length/$dots*$i*-1 - 5 + $length/2;
+              margin: -5px $length/($dot-count - 1)*$i*-1 - 5 + $length/2;
               animation: trail-#{$i} $speed linear infinite;
               $rest: 100 - $start_val;
               @keyframes trail-#{$i} {
@@ -233,9 +236,9 @@ body {
                 }
                 @for $j from 1 to ceil($rest/$detail) {
                   $m: $j*$detail;
-                  $n: 0.5; //sin(180deg/$rest*$m)*100;
+                  $n: sin(180deg/$rest*$m)*100;
                   #{$m + $start} {
-                    @include trail($length/$dots*($i), 30deg/$rest/$dots*($i + 60)*$n, $detail*($i + 6), -360/$dots*$i);
+                    @include trail($length/($dot-count - 1)*($i), 30deg/$rest/($dot-count - 1)*($i + 60)*$n, $detail*($i + 6), -360/($dot-count - 1)*$i);
                   }
                 }
               }

@@ -13,7 +13,6 @@ export class HexagonDot extends Component {
         const { index, totalNumber } = this.props;
         const position = (index + 1) / (totalNumber + 2) * 100;
         const style = {
-            left: `${position}%`,
         };
 
         return (
