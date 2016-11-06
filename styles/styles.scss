@@ -1,0 +1,257 @@
+@mixin full-screen {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin trail($size,$deg, $trail, $hue) {
+  @for $i from 0 to $trail {
+    $x: $size - cos($deg/$sides/$trail*$i) * $size;
+    $y: sin($deg/$sides/$trail*$i) * $size;
+    $color: #ffffff;
+    $layer: $x $y 0 -4px $color;
+  }
+}
+
+html {
+  @include full-screen();
+}
+
+body {
+  @include full-screen();
+  background-color: $background-color;
+  padding: 0;
+  margin: 0;
+
+  > div {
+    @include full-screen();
+  }
+}
+
+.app {
+  @include full-screen();
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  flex: 0 auto;
+  margin: 10px;
+}
+
+.animated {
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+.outer {
+
+  display: inline-block;
+  flex: 1;
+  position: relative;
+  margin: 30px 30px;
+
+  &.rotating-line {
+    top: 50%;
+  }
+
+  &.helix {
+    top: 50%;
+  }
+
+  &.hexagon {
+    left: 50%;
+    height: 2px;
+    width: $length;
+    margin: -1px $length/-2;
+    z-index: 4;
+    animation: jump 4.5s steps(6) infinite;
+  }
+
+  .dots {
+
+    &.snail {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 250px;
+      height: 250px;
+    }
+
+    &.hexagon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      animation: spin $speed ease-in-out infinite;
+      transform-origin: 100% 50%;
+    }
+
+    &.animated {
+      &.rotating-line {
+        animation-duration: 4000ms;
+        animation-direction: normal;
+        animation-timing-function: linear;
+        animation-name: rotating;
+      }
+      &.rotating-square {
+        animation-duration: 4000ms;
+        margin-top: 100px;
+        animation-direction: normal;
+        animation-timing-function: linear;
+        animation-name: rotating;
+      }
+    }
+
+    &.rotating-square {
+      flex: none;
+      width: 300px;
+      height: 300px;
+      margin: 0 auto;
+    }
+
+    &.ball {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 250px;
+      height: 250px;
+      transform: translate(-50%);
+      animation: rotate 10s linear 0s infinite;
+    }
+
+    > .dot {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $dot-color;
+      width: $dot-size;
+      height: $dot-size;
+      border: 0;
+      border-radius: $dot-size / 2;
+
+      &.animated {
+        &.vertical {
+          animation-name: vertical;
+        }
+
+        &.horizontal {
+          animation-name: horizontal;
+        }
+
+        &.diagonal {
+          animation-name: diagonal;
+        }
+
+        &.diagonal-reversed {
+          animation-name: diagonal-reversed;
+        }
+
+        &.helix {
+          display: inline-block;
+          position: relative;
+
+          @for $i from 1 through $dot-count {
+            &:nth-child(#{$i}) {
+              transform: translateY(500%);
+              animation: helix 1s linear infinite;
+              animation-delay: $i*-0.9s;
+            }
+          }
+        }
+
+        &.ball {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          background: $background-color;
+          @for $i from 1 through $dot-count {
+            $rotate: $rotate + $angle;
+            &:nth-child(#{$i}) {
+              transform: translate($dot-size / 2) rotate(#{$rotate + 90}deg);
+              span {
+                background: $dot-color;
+              }
+            }
+          }
+          span {
+            position: absolute;
+            width: $dot-size;
+            height: $dot-size;
+            border-radius: 50%;
+            animation: 3s ball-pop 0s ease-out infinite;
+          }
+        }
+
+        &.snail {
+          position: absolute;
+          top: -1*$size;
+          height: $size*2;
+          background-color: transparent;
+          @for $j from 0 to $dot-count {
+            $jj: $j+1;
+            &:nth-child(#{$jj}) {
+              transform: rotate($da*$j);
+              &:after {
+                animation-delay: $ddur*$j*1;
+              }
+            }
+          }
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            transform: translateX(-50%) translateY(-50%);
+            width: $dot-size;
+            height: $dot-size;
+            z-index: 100;
+            background-color: $dot-color;
+            border-radius: 100%;
+            animation: a $dur infinite alternate;
+            animation-timing-function: nth($fns, 1);
+          }
+        }
+
+        &.hexagon {
+          position: absolute;
+          z-index: 4;
+          top: 50%;
+          left: 50%;
+          height: $dot-size;
+          width: $dot-size;
+          background: #fff;
+          border-radius: 100%;
+          animation: trail $speed linear infinite;
+
+          @for $i from 0 to $dot-count {
+            &:nth-child(#{$i + 1}) {
+              margin: -5px $length/($dot-count - 1)*$i*-1 - 5 + $length/2;
+              animation: trail-#{$i} $speed linear infinite;
+              $rest: 100 - $start_val;
+              @keyframes trail-#{$i} {
+                0%, #{$start}, 100% {
+                  box-shadow: 0 0 0;
+                }
+                @for $j from 1 to ceil($rest/$detail) {
+                  $m: $j*$detail;
+                  $n: sin(180deg/$rest*$m)*100;
+                  #{$m + $start} {
+                    @include trail($length/($dot-count - 1)*($i), 30deg/$rest/($dot-count - 1)*($i + 60)*$n, $detail*($i + 6), -360/($dot-count - 1)*$i);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes a {
+  to {
+    top: 100%;
+  }
+}

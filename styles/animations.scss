@@ -1,0 +1,119 @@
+@keyframes vertical {
+  from {
+    top: 0;
+  }
+
+  to {
+    top: calc(100% - #{$dot-size});
+  }
+}
+
+@keyframes horizontal {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(100% - #{$dot-size});
+  }
+}
+
+@keyframes diagonal {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(100% - #{$dot-size});
+  }
+}
+
+@keyframes diagonal-reversed {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(100% - #{$dot-size});
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes helix {
+  0% {
+    transform: translateY(500%);
+    z-index: -1;
+  }
+
+  25% {
+    transform: translateY(0);
+    z-index: -1;
+  }
+
+  50% {
+    transform: translateY(-500%);
+    z-index: 1;
+  }
+
+  75% {
+    transform: translateY(0);
+    z-index: 1;
+  }
+
+  100% {
+    transform: translateY(500%);
+    z-index: 1;
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: rotate(0deg) translateY($size);
+  }
+  100% {
+    transform: rotate(-360deg) translateY($size);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  #{$delay} {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg/$sides*2);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes ball-pop {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(150px);
+  }
+  75% {
+    transform: translateX(300px);
+  }
+}
